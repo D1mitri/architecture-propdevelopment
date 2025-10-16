@@ -1,0 +1,30 @@
+@startuml
+title Контекстная диаграмма "PropDevelopment"
+
+top to bottom direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Context.puml
+
+Person(client, "Пользователь", "Собственник недвижимости")
+
+System(MobileApp, "Мобильное приложение", "Мобильное приложение, которое используют собственники")
+System(SmartHome, "Умный дом", "Управление Умным домом")
+System(CommunalService, "Коммунальные услуги", "Сервис для оплаты услуг ЖКХ")
+System(InfoService, "Информационный сервис", "Сервис для получения информации от управляющей компании")
+System(HouseRenovationService, "Капитальный ремонт", "Сервис для получения актуальных данных о запланированных работах, просмотр истории проведённых работ")
+System(ApartmentLock, "Умный замок в кваритире", "Запирает квартиру")
+System(Automation, "Автоматика", "Управление автоматикой в жилом помещении и на этажах")
+System(SmartIntercom, "Интеллектуальный домофон", "Включает функции классического видеодомофона и может распознавать пользователей по биометрии")
+System(SmartBarrier, "Интеллектуальный шлагбаум", "Включает функции классического управления шлагбаумом и умеет автоматически открываться")
+
+Rel(client, MobileApp, "Взаимодействие с управляющей компанией")
+Rel(MobileApp, SmartHome, "Управляет умным домом", "API")
+Rel(SmartHome, CommunalService, "Оплата услуг ЖКХ", "API")
+Rel(SmartHome, InfoService, "Получение информации от управляющей компании", "API")
+Rel(SmartHome, HouseRenovationService, "Получение информации о текущем и капитальном ремонте", "API")
+Rel(SmartHome, ApartmentLock, "Управляет замком в квартире", "API")
+Rel(SmartHome, Automation, "Управляет автоматикой", "API")
+Rel(SmartHome, SmartIntercom, "Управляет домофоном", "API")
+Rel(SmartHome, SmartBarrier, "Управляет шлагбаумом", "API")
+
+@enduml
